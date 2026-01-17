@@ -2,113 +2,177 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TurboSeek - SANN404</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TurboSeek AI - SANN404 Edition</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <aside class="sidebar">
-            <div class="brand">
-                <div class="brand-logo">
-                    <span class="material-icons-round">bolt</span>
-                </div>
-                <h2>TurboSeek</h2>
+    <div id="landing-page" class="landing-container">
+        <div class="landing-header">
+            <div class="logo-area">
+                <span class="material-icons-round logo-icon">ac_unit</span>
+                <span class="logo-text">TurboSeek</span>
             </div>
+            <span class="skip-btn">v2.0</span>
+        </div>
+
+        <div class="landing-hero">
+            <h1>Explore <br><i>infinite</i> <br><span class="highlight-text">capabilities</span> <br>of searching</h1>
+        </div>
+
+        <div class="feature-stack">
+            <div class="feature-card">
+                <div class="icon-circle"><span class="material-icons-round">memory</span></div>
+                <div class="feature-text">
+                    <p>Powered by advanced AI models for accurate answers</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle"><span class="material-icons-round">history_edu</span></div>
+                <div class="feature-text">
+                    <p>Remembers context from your search session</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle"><span class="material-icons-round">security</span></div>
+                <div class="feature-text">
+                    <p>Secure and private data processing</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="landing-footer-actions">
+            <button id="enter-app-btn" class="primary-btn-lg">Start Exploring</button>
             
-            <nav class="menu">
-                <a href="#" class="active" id="btn-new-search">
-                    <span class="material-icons-round">search</span>
-                    Pencarian Baru
-                </a>
-                <a href="#" id="clear-history">
-                    <span class="material-icons-round">delete_outline</span>
-                    Hapus Riwayat
-                </a>
-            </nav>
-
-            <div class="history-section">
-                <h3>Riwayat Terakhir</h3>
-                <ul id="history-list">
-                    </ul>
+            <div class="professional-credits">
+                <p>DEVELOPED BY <strong>SANN404 FORUM</strong></p>
+                <p class="sub-credit">Emile & Co. Enterprise | Jakarta, ID</p>
+                <p class="contact-credit">contact@sann404.com</p>
             </div>
+        </div>
+    </div>
 
-            <div class="credit-box">
-                <div class="credit-header">POWERED BY</div>
-                <div class="credit-name">SANN404 FORUM</div>
-                <div class="credit-info">
-                    <p><span class="material-icons-round tiny-icon">business</span> Sann Tech Innovations</p>
-                    <p><span class="material-icons-round tiny-icon">email</span> contact@sann404.com</p>
+    <div id="main-app" class="app-container hidden-section">
+        
+        <header class="app-header">
+            <div class="header-left">
+                <button id="menu-toggle"><span class="material-icons-round">grid_view</span></button>
+            </div>
+            <div class="header-center">
+                <span class="app-title">TurboSeek AI</span>
+            </div>
+            <div class="header-right">
+                <div class="user-avatar">
+                    <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Felix" alt="User">
                 </div>
-                <div class="credit-footer">&copy; 2024 All Rights Reserved.</div>
+            </div>
+        </header>
+
+        <aside id="sidebar-overlay" class="sidebar-hidden">
+            <div class="sidebar-content">
+                <div class="sidebar-top">
+                    <h2>History</h2>
+                    <button id="close-sidebar"><span class="material-icons-round">close</span></button>
+                </div>
+                <div class="history-list-container">
+                    <ul id="history-list">
+                        </ul>
+                </div>
+                <button id="clear-history" class="clear-btn">
+                    <span class="material-icons-round">delete</span> Clear History
+                </button>
+                <div class="sidebar-footer">
+                    <small>SANN404 FORUM © 2026</small>
+                </div>
             </div>
         </aside>
 
-        <main class="main-content">
-            <div class="hero-section">
-                <div class="hero-content">
-                    <h1>Explore Knowledge with AI</h1>
-                    <p>The growing source for all your questions, empowered by community sources to ensure you get the most recent data.</p>
-                </div>
-            </div>
-
-            <div class="search-overlay">
-                <form id="search-form" class="search-bar">
-                    <span class="material-icons-round search-icon">search</span>
-                    <input type="text" id="question-input" placeholder="Search anything (e.g., what is llm?)..." required autocomplete="off">
-                    <button type="submit" id="submit-btn">
-                        <span class="material-icons-round">arrow_forward</span>
-                    </button>
-                </form>
-
-                <div class="badges-container">
-                    <div class="badge"><span class="material-icons-round">code</span>Dev (37)</div>
-                    <div class="badge"><span class="material-icons-round">menu_book</span>Books (22)</div>
-                    <div class="badge"><span class="material-icons-round">lock</span>Security (9)</div>
-                    <div class="badge"><span class="material-icons-round">movie</span>Movie (2)</div>
-                    <div class="badge"><span class="material-icons-round">email</span>Email (17)</div>
-                </div>
-            </div>
-
-            <div class="content-area">
-                <div id="loading" class="hidden">
-                    <div class="spinner"></div>
-                    <p>Sedang memproses...</p>
+        <main class="chat-area">
+            
+            <div id="welcome-screen" class="welcome-container">
+                <h2 class="greeting">Good morning, <br><span class="user-name">User</span></h2>
+                
+                <div class="quick-actions">
+                    <div class="action-pill">
+                        <span class="material-icons-round">work_outline</span>
+                        <span>Job Finder UX</span>
+                    </div>
+                    <div class="action-pill">
+                        <span class="material-icons-round">campaign</span>
+                        <span>Marketing Strategy</span>
+                    </div>
                 </div>
 
-                <div id="result-container" class="hidden">
-                    
-                    <section class="result-card main-answer">
-                        <div class="card-header">
-                            <span class="material-icons-round icon-blue">auto_awesome</span>
-                            <h3>Jawaban AI</h3>
-                        </div>
-                        <div class="card-body" id="answer-text"></div>
-                    </section>
-
-                    <div class="grid-2-col">
-                        <section class="result-card">
-                            <div class="card-header">
-                                <span class="material-icons-round icon-green">link</span>
-                                <h3>Sumber</h3>
-                            </div>
-                            <ul class="link-list" id="sources-list"></ul>
-                        </section>
-
-                        <section class="result-card">
-                            <div class="card-header">
-                                <span class="material-icons-round icon-orange">help_outline</span>
-                                <h3>Terkait</h3>
-                            </div>
-                            <ul class="similar-list" id="similar-list"></ul>
-                        </section>
+                <div class="explore-grid">
+                    <div class="explore-card">
+                        <div class="card-icon"><span class="material-icons-round">business_center</span></div>
+                        <h3>Business</h3>
+                        <p>Analyze market trends and business strategies.</p>
+                        <span class="arrow-btn"><span class="material-icons-round">arrow_forward</span></span>
+                    </div>
+                    <div class="explore-card">
+                        <div class="card-icon"><span class="material-icons-round">code</span></div>
+                        <h3>Coding</h3>
+                        <p>Generate code snippets and debug issues.</p>
+                        <span class="arrow-btn"><span class="material-icons-round">arrow_forward</span></span>
                     </div>
                 </div>
             </div>
+
+            <div id="loading" class="hidden">
+                <div class="loader-pulse"></div>
+                <p>Generating response...</p>
+            </div>
+
+            <div id="result-container" class="hidden">
+                
+                <div class="chat-bubble user-bubble">
+                    <p id="user-query-display"></p>
+                </div>
+
+                <div class="chat-bubble ai-bubble">
+                    <div class="bubble-header">
+                        <span class="material-icons-round ai-icon">auto_awesome</span>
+                        <span>TurboSeek Analysis</span>
+                    </div>
+                    <div class="bubble-content" id="answer-text">
+                        </div>
+                    <div class="bubble-footer">
+                        <div class="action-icons">
+                            <span class="material-icons-round">content_copy</span>
+                            <span class="material-icons-round">thumb_up</span>
+                            <span class="material-icons-round">thumb_down</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="material-icons-round">link</span> Sources</h4>
+                    <ul class="source-list" id="sources-list"></ul>
+                </div>
+
+                <div class="info-card">
+                    <h4><span class="material-icons-round">manage_search</span> Related</h4>
+                    <ul class="similar-list" id="similar-list"></ul>
+                </div>
+                
+                <div style="height: 100px;"></div>
+            </div>
+
         </main>
+
+        <div class="input-area-fixed">
+            <form id="search-form" class="search-bar-wrapper">
+                <input type="text" id="question-input" placeholder="Type your question..." autocomplete="off" required>
+                <button type="submit" id="submit-btn">
+                    <span class="material-icons-round">arrow_upward</span>
+                </button>
+            </form>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
