@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurboSeek AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="material-icons-round">bolt</span>
+                <h2>TurboSeek</h2>
+            </div>
+            
+            <nav class="menu">
+                <a href="#" class="active">
+                    <span class="material-icons-round">search</span>
+                    Pencarian Baru
+                </a>
+                <a href="#" id="clear-history">
+                    <span class="material-icons-round">delete_outline</span>
+                    Hapus Riwayat
+                </a>
+            </nav>
+
+            <div class="history-section">
+                <h3>Riwayat</h3>
+                <ul id="history-list">
+                    </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="search-container">
+                <h1>Apa yang ingin Anda ketahui?</h1>
+                <form id="search-form">
+                    <div class="input-group">
+                        <input type="text" id="question-input" placeholder="Tanyakan sesuatu (misal: what is llm?)..." required autocomplete="off">
+                        <button type="submit" id="submit-btn">
+                            <span class="material-icons-round">arrow_forward</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Sedang mencari jawaban...</p>
+            </div>
+
+            <div id="result-container" class="hidden">
+                
+                <section class="result-card answer-card">
+                    <div class="card-header">
+                        <span class="material-icons-round">auto_awesome</span>
+                        <h3>Jawaban AI</h3>
+                    </div>
+                    <div class="card-body" id="answer-text"></div>
+                </section>
+
+                <div class="meta-data-grid">
+                    <section class="result-card">
+                        <div class="card-header">
+                            <span class="material-icons-round">link</span>
+                            <h3>Sumber Referensi</h3>
+                        </div>
+                        <ul class="source-list" id="sources-list"></ul>
+                    </section>
+
+                    <section class="result-card">
+                        <div class="card-header">
+                            <span class="material-icons-round">help_outline</span>
+                            <h3>Pertanyaan Terkait</h3>
+                        </div>
+                        <ul class="similar-list" id="similar-list"></ul>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
