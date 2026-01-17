@@ -7,19 +7,36 @@ const sourcesList = document.getElementById('sources-list');
 const similarList = document.getElementById('similar-list');
 const historyList = document.getElementById('history-list');
 
+// Tombol Reset Baru
+const btnNewSearch = document.getElementById('btn-new-search');
+
 // Load history on start
 let searchHistory = JSON.parse(localStorage.getItem('turboHistory')) || [];
 renderHistory();
 
+// Event Listener: Form Submit
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const query = input.value.trim();
     if (query) {
+        // Pada mobile, tutup keyboard setelah submit
+        input.blur();
         performSearch(query);
     }
 });
 
-document.getElementById('clear-history').addEventListener('click', () => {
+// Event Listener: Pencarian Baru (Reset UI)
+btnNewSearch.addEventListener('click', (e) => {
+    e.preventDefault();
+    resultContainer.classList.add('hidden');
+    input.value = '';
+    input.focus();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Event Listener: Hapus History
+document.getElementById('clear-history').addEventListener('click', (e) => {
+    e.preventDefault();
     searchHistory = [];
     localStorage.removeItem('turboHistory');
     renderHistory();
@@ -29,13 +46,13 @@ async function performSearch(question) {
     // UI Reset
     resultContainer.classList.add('hidden');
     loading.classList.remove('hidden');
-    input.value = question;
+    input.value = question; // Set input kalau di-klik dari history/similar
     
     // Add to history
     addToHistory(question);
 
     try {
-        // Panggil Serverless Function
+        // Panggil Serverless Function (LOGIKA TETAP SAMA)
         const response = await fetch(`/api?question=${encodeURIComponent(question)}`);
         const data = await response.json();
 
@@ -46,7 +63,7 @@ async function performSearch(question) {
         }
     } catch (error) {
         console.error(error);
-        alert('Gagal mengambil data. Silakan coba lagi.');
+        alert('Gagal mengambil data. Cek koneksi internet Anda.');
     } finally {
         loading.classList.add('hidden');
     }
@@ -64,7 +81,12 @@ function displayResults(data) {
             const a = document.createElement('a');
             a.href = url;
             a.target = '_blank';
-            a.textContent = new URL(url).hostname; // Tampilkan domain saja agar rapi
+            try {
+                // Tampilkan domain saja agar rapi
+                a.textContent = new URL(url).hostname; 
+            } catch (e) {
+                a.textContent = 'Sumber Eksternal';
+            }
             li.appendChild(a);
             sourcesList.appendChild(li);
         });
@@ -77,8 +99,13 @@ function displayResults(data) {
     if (data.similarQuestions && data.similarQuestions.length > 0) {
         data.similarQuestions.forEach(q => {
             const li = document.createElement('li');
-            li.textContent = q.question || q; // Sesuaikan dengan struktur respons
-            li.onclick = () => performSearch(li.textContent);
+            // Handle jika formatnya object atau string
+            const qText = typeof q === 'object' ? q.question : q;
+            li.textContent = qText;
+            li.onclick = () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                performSearch(qText);
+            };
             similarList.appendChild(li);
         });
     } else {
