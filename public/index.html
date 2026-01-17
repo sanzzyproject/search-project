@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TurboSeek AI</title>
+    <title>TurboSeek - SANN404</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 </head>
 <body>
@@ -12,12 +13,14 @@
     <div class="container">
         <aside class="sidebar">
             <div class="brand">
-                <span class="material-icons-round">bolt</span>
+                <div class="brand-logo">
+                    <span class="material-icons-round">bolt</span>
+                </div>
                 <h2>TurboSeek</h2>
             </div>
             
             <nav class="menu">
-                <a href="#" class="active">
+                <a href="#" class="active" id="btn-new-search">
                     <span class="material-icons-round">search</span>
                     Pencarian Baru
                 </a>
@@ -28,56 +31,81 @@
             </nav>
 
             <div class="history-section">
-                <h3>Riwayat</h3>
+                <h3>Riwayat Terakhir</h3>
                 <ul id="history-list">
                     </ul>
+            </div>
+
+            <div class="credit-box">
+                <div class="credit-header">POWERED BY</div>
+                <div class="credit-name">SANN404 FORUM</div>
+                <div class="credit-info">
+                    <p><span class="material-icons-round tiny-icon">business</span> Sann Tech Innovations</p>
+                    <p><span class="material-icons-round tiny-icon">email</span> contact@sann404.com</p>
+                </div>
+                <div class="credit-footer">&copy; 2024 All Rights Reserved.</div>
             </div>
         </aside>
 
         <main class="main-content">
-            <div class="search-container">
-                <h1>Apa yang ingin Anda ketahui?</h1>
-                <form id="search-form">
-                    <div class="input-group">
-                        <input type="text" id="question-input" placeholder="Tanyakan sesuatu (misal: what is llm?)..." required autocomplete="off">
-                        <button type="submit" id="submit-btn">
-                            <span class="material-icons-round">arrow_forward</span>
-                        </button>
-                    </div>
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>Explore Knowledge with AI</h1>
+                    <p>The growing source for all your questions, empowered by community sources to ensure you get the most recent data.</p>
+                </div>
+            </div>
+
+            <div class="search-overlay">
+                <form id="search-form" class="search-bar">
+                    <span class="material-icons-round search-icon">search</span>
+                    <input type="text" id="question-input" placeholder="Search anything (e.g., what is llm?)..." required autocomplete="off">
+                    <button type="submit" id="submit-btn">
+                        <span class="material-icons-round">arrow_forward</span>
+                    </button>
                 </form>
+
+                <div class="badges-container">
+                    <div class="badge"><span class="material-icons-round">code</span>Dev (37)</div>
+                    <div class="badge"><span class="material-icons-round">menu_book</span>Books (22)</div>
+                    <div class="badge"><span class="material-icons-round">lock</span>Security (9)</div>
+                    <div class="badge"><span class="material-icons-round">movie</span>Movie (2)</div>
+                    <div class="badge"><span class="material-icons-round">email</span>Email (17)</div>
+                </div>
             </div>
 
-            <div id="loading" class="hidden">
-                <div class="spinner"></div>
-                <p>Sedang mencari jawaban...</p>
-            </div>
+            <div class="content-area">
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Sedang memproses...</p>
+                </div>
 
-            <div id="result-container" class="hidden">
-                
-                <section class="result-card answer-card">
-                    <div class="card-header">
-                        <span class="material-icons-round">auto_awesome</span>
-                        <h3>Jawaban AI</h3>
+                <div id="result-container" class="hidden">
+                    
+                    <section class="result-card main-answer">
+                        <div class="card-header">
+                            <span class="material-icons-round icon-blue">auto_awesome</span>
+                            <h3>Jawaban AI</h3>
+                        </div>
+                        <div class="card-body" id="answer-text"></div>
+                    </section>
+
+                    <div class="grid-2-col">
+                        <section class="result-card">
+                            <div class="card-header">
+                                <span class="material-icons-round icon-green">link</span>
+                                <h3>Sumber</h3>
+                            </div>
+                            <ul class="link-list" id="sources-list"></ul>
+                        </section>
+
+                        <section class="result-card">
+                            <div class="card-header">
+                                <span class="material-icons-round icon-orange">help_outline</span>
+                                <h3>Terkait</h3>
+                            </div>
+                            <ul class="similar-list" id="similar-list"></ul>
+                        </section>
                     </div>
-                    <div class="card-body" id="answer-text"></div>
-                </section>
-
-                <div class="meta-data-grid">
-                    <section class="result-card">
-                        <div class="card-header">
-                            <span class="material-icons-round">link</span>
-                            <h3>Sumber Referensi</h3>
-                        </div>
-                        <ul class="source-list" id="sources-list"></ul>
-                    </section>
-
-                    <section class="result-card">
-                        <div class="card-header">
-                            <span class="material-icons-round">help_outline</span>
-                            <h3>Pertanyaan Terkait</h3>
-                        </div>
-                        <ul class="similar-list" id="similar-list"></ul>
-                    </section>
                 </div>
             </div>
         </main>
